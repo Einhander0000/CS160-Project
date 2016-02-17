@@ -3,7 +3,7 @@ class CreateToDos < ActiveRecord::Migration
     create_table :to_dos do |t|
       t.string :task
       t.text :description
-      t.int :time
+      t.integer :time
 
       t.timestamps null: false
     end
