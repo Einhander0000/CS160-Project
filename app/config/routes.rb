@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   resources :signups
-=======
->>>>>>> c8f65eaa0fc64caf3edd62a1e35dfbe913625857
   get 'welcome/index'
 
   resources :to_dos
