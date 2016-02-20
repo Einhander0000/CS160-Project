@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Life Planner</title>
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="/assets/pencil-n-paper_small.jpg" alt="Small Logo" name="Insert_logo" width="180" height="90" id="Small_logo" style="background-color: #C6D580; display:block;" />
+  	<% if current_user %>
+      Signed in as <%= current_user.name %> | <button type="submit" id="logout" onclick="logout_b()"value="0">Logout</button>
+    <% else %>
+      <button type="submit" id="login" onclick="login_b()"value="0">Login</button> | <button type="submit" id="signup" onclick="signup_b()"value="0">Signup</button>
+    <% end %>
+    <%= yield %>
+   <script>
+		function signup_b() {
+	    	location.href = "/signup"
+		}
+		function logout_b() {
+	    	location.href = "/logout"
+		}
+		function login_b(){
+			location.href = "/login"
+		}
+
+	</script>
+  <!-- end .header --></div>
+  <div class="sidebar1">
+    <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="to_dos">My Planner</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  
+    <!-- end .sidebar1 --></div>
+  <div class="content">
+  	<h1>Signup!</h1>
+
+	<%= form_for :user, url: '/users' do |f| %>
+
+	  <p>Name: <%= f.text_field :name %></p>
+	  <p>Email: <%= f.text_field :email %></p>
+	  <p>Password: <%= f.password_field :password %></p>
+	  <p>Password Confirmation: <%= f.password_field :password_confirmation %>
+	  <%= f.submit "Submit" %></p>
+
+	<% end %>
+  </div>
+  <div class="footer">
+    <p><strong>© 2016 Mak Survival Edition.  All rights reserved.</strong></p>
+  <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>
