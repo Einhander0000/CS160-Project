@@ -13,6 +13,5 @@
 //= require jquery
 //= require calendarview
 //= require prototype
-//= require todolist
 //= require jquery_ujs
 //= require_tree .
