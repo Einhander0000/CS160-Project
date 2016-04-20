@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require calendarview
+//= require prototype
+//= require todolist
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .

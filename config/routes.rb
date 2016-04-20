@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   resources :signups
   get 'welcome/index'
 
+  resources :calendar
+
+  resources :todolist
+
   resources :to_dos
 
   root 'welcome#index'
