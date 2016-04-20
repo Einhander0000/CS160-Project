@@ -1,3 +1,21 @@
+//
+// CalendarView (for Prototype)
+// calendarview.org
+//
+// Maintained by Justin Mecham <justin@aspect.net>
+//
+// Portions Copyright 2002-2005 Mihai Bazon
+//
+// This calendar is based very loosely on the Dynarch Calendar in that it was
+// used as a base, but completely gutted and more or less rewritten in place
+// to use the Prototype JavaScript library.
+//
+// As such, CalendarView is licensed under the terms of the GNU Lesser General
+// Public License (LGPL). More information on the Dynarch Calendar can be
+// found at:
+//
+//   www.dynarch.com/projects/calendar
+//
 
 var Calendar = Class.create()
 
@@ -58,6 +76,8 @@ Calendar.handleMouseDownEvent = function(event)
   Event.stop(event)
 }
 
+// XXX I am not happy with how clicks of different actions are handled. Need to
+// clean this up!
 Calendar.handleMouseUpEvent = function(event)
 {
   var el        = Event.element(event)
@@ -212,6 +232,31 @@ Calendar.setup = function(params)
     }
     calendar.show()
     return calendar
+  }
+
+  // Popup Calendars
+  //
+  // XXX There is significant optimization to be had here by creating the
+  // calendar and storing it on the page, but then you will have issues with
+  // multiple calendars on the same page.
+  else
+  {
+    var triggerElement = $(params.triggerElement || params.dateField)
+    triggerElement.onclick = function() {
+      var calendar = new Calendar()
+      calendar.setSelectHandler(params.selectHandler || Calendar.defaultSelectHandler)
+      calendar.setCloseHandler(params.closeHandler || Calendar.defaultCloseHandler)
+      if (params.dateFormat)
+        calendar.setDateFormat(params.dateFormat)
+      if (params.dateField) {
+        calendar.setDateField(params.dateField)
+        calendar.parseDate(calendar.dateField.innerHTML || calendar.dateField.value)
+      }
+      if (params.dateField)
+        Date.parseDate(calendar.dateField.value || calendar.dateField.innerHTML, calendar.dateFormat)
+      calendar.showAtElement(triggerElement)
+      return calendar
+    }
   }
 
 }
