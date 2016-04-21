@@ -150,13 +150,13 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 	font-size: 1px;
 	line-height: 0px;
 }
--->
-</style></head>
 
+</style></head>
+  
     <%= javascript_include_tag "prototype" %>
     <%= javascript_include_tag "calendarview" %>
-    <script>
     
+    <script>
     function setupCalendars() 
 	  {
         // Embedded Calendar
@@ -174,11 +174,13 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 <body>
 
 <div class="container">
-  <div class="header"><img src="pencil-n-paper_small.jpg" alt="Small Logo" name="Insert_logo" width="180" height="90" id="Small_logo" style="background-color: #C6D580; display:block;" />
+  <div class="header"><img src="/assets/pencil-n-paper_small.jpg" alt="Small Logo" name="Insert_logo" width="180" height="90" id="Small_logo" style="background-color: #C6D580; display:block;" />
 <!--   <button type="submit" id="login" value="0">Login</button> -->
   <!-- end .header --></div>
+
   <div class="sidebar1">
     <ul class="nav">
+      <li><a href="\">Home</a></li>
       <li><a href="#to_dos">To Do</a></li>
       <li><a href="#">Add/Edit Events</a></li>
       <li><a href="#">Set notification</a></li>

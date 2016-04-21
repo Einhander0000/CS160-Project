@@ -58,6 +58,7 @@ Calendar.NAV_NEXT_YEAR      =  2
 // document, if the calendar is shown. If the click was outside the open
 // calendar this function closes it.
 Calendar._checkCalendar = function(event) {
+
   if (!window._popupCalendar)
     return false
   if (Element.descendantOf(Event.element(event), window._popupCalendar.container))
@@ -72,6 +73,7 @@ Calendar._checkCalendar = function(event) {
 
 Calendar.handleMouseDownEvent = function(event)
 {
+
   Event.observe(document, 'mouseup', Calendar.handleMouseUpEvent)
   Event.stop(event)
 }
@@ -80,6 +82,7 @@ Calendar.handleMouseDownEvent = function(event)
 // clean this up!
 Calendar.handleMouseUpEvent = function(event)
 {
+
   var el        = Event.element(event)
   var calendar  = el.calendar
   var isNewDate = false
@@ -91,7 +94,9 @@ Calendar.handleMouseUpEvent = function(event)
   // Clicked on a day
   if (typeof el.navAction == 'undefined')
   {
+
     if (calendar.currentDateElement) {
+    
       Element.removeClassName(calendar.currentDateElement, 'selected')
       Element.addClassName(el, 'selected')
       calendar.shouldClose = (calendar.currentDateElement == el)
