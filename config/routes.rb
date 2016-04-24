@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :steps
+  resources :goals
   resources :signups
   get 'welcome/index'
 

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219200720) do
+ActiveRecord::Schema.define(version: 20160423013617) do
+
+  create_table "goals", force: :cascade do |t|
+    t.string   "Goal"
+    t.text     "Description"
+    t.date     "Date"
+    t.date     "DueDate"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "signups", force: :cascade do |t|
     t.string   "screen_name"
@@ -22,6 +31,13 @@ ActiveRecord::Schema.define(version: 20160219200720) do
     t.string   "confirm_password"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.string   "requirement"
+    t.integer  "completionTime"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "to_dos", force: :cascade do |t|
