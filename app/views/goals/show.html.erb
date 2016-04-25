@@ -51,10 +51,16 @@
               <strong>Duedate:</strong>
               <%= @goal.DueDate %>
             </p>
-            <p>
-              <strong>Steps:</strong>
-              <%= @goal.Steps %>
+            <p><strong>Steps:</strong>
+              <ul>
+                <% @steps.each do |step| %>
+                <li>
+                  <%= step %>
+                </li>
+                <% end %>
+              </ul>
             </p>
+            
             <%= link_to 'Edit', edit_goal_path(@goal) %> |
             <%= link_to 'Back', goals_path %>
             <!-- end .content -->

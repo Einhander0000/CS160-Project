@@ -1,5 +1,5 @@
 class StepsController < ApplicationController
-  before_action :set_step, only: [:show, :edit, :update, :destroy]
+  #before_action :set_step, only: [:show, :edit, :update, :destroy]
   before_filter :authorize
   
   # GET /steps

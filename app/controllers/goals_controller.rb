@@ -11,6 +11,8 @@ class GoalsController < ApplicationController
   # GET /goals/1
   # GET /goals/1.json
   def show
+    @goal = Goal.find(params[:id])
+    @steps = @goal.steps(page: params[:page])
   end
 
   # GET /goals/new
