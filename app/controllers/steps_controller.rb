@@ -5,7 +5,9 @@ class StepsController < ApplicationController
   # GET /steps
   # GET /steps.json
   def index
-    @steps = Step.all
+    @steps   = current_user.steps.new
+    @goals  = current_user.goals
+    @goal   = current_user.goals.new
   end
 
   # GET /steps/1
@@ -25,9 +27,10 @@ class StepsController < ApplicationController
   # POST /steps
   # POST /steps.json
   def create
-    @step = Step.new(step_params)
-
-    respond_to do |format|
+    @goal = Goal.find(params[:goal_id])
+    @step = @goal.steps.new(step_params)
+    
+     respond_to do |format|
       if @step.save
         format.html { redirect_to @step, notice: 'Step was successfully created.' }
         format.json { render :show, status: :created, location: @step }
@@ -36,6 +39,8 @@ class StepsController < ApplicationController
         format.json { render json: @step.errors, status: :unprocessable_entity }
       end
     end
+
+    redirect_to(goal_steps_url(@goal))
   end
 
   # PATCH/PUT /steps/1
