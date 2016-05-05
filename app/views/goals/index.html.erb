@@ -51,6 +51,8 @@
               </thead>
               <tbody>
                 <% @goals.each do |goal| %>
+                <!-- Ensure that you only display goals for current user -->
+                <% if current_user.id == goal.user_id %>
                 <tr>
                   <td><%= goal.Goal %></td>
                   <td><%= goal.Description %></td>
@@ -60,6 +62,7 @@
                   <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
                   <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
+                <% end %>
                 <% end %>
               </tbody>
             </table>

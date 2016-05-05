@@ -5,6 +5,7 @@ class CreateGoals < ActiveRecord::Migration
       t.text :Description
       t.date :Date
       t.date :DueDate
+      t.user_id :user_id
 
       t.timestamps null: false
     end

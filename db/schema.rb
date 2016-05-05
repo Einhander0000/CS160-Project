@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160423013617) do
     t.text     "Description"
     t.date     "Date"
     t.date     "DueDate"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160423013617) do
   create_table "steps", force: :cascade do |t|
     t.string   "requirement"
     t.integer  "completionTime"
+    t.integer  "goal_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

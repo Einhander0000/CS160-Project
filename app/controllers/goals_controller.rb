@@ -12,7 +12,6 @@ class GoalsController < ApplicationController
   # GET /goals/1.json
   def show
     @goal = Goal.find(params[:id])
-    @steps = @goal.steps(page: params[:page])
   end
 
   # GET /goals/new
@@ -73,6 +72,6 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:Goal, :Description, :Date, :DueDate, :Steps)
+      params.require(:goal).permit(:Goal, :Description, :Date, :DueDate, :user_id)
     end
 end

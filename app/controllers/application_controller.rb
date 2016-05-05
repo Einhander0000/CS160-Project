@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def current_goal
+    @current_goal ||= Goal.find(session[:goal_id]) if session[:goal_id]
+    rescue ActiveRecord::RecordNotFound
+  end
+  helper_method :current_goal
+
   def authorize
     redirect_to '/login' unless current_user
   end

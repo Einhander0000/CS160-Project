@@ -53,10 +53,12 @@
             </p>
             <p><strong>Steps:</strong>
               <ul>
-                <% @steps.each do |step| %>
+                <% @goal.steps.each do |step| %>
+                <% if current_goal == step.goal_id %>
                 <li>
                   <%= step %>
                 </li>
+                <% end %>
                 <% end %>
               </ul>
             </p>

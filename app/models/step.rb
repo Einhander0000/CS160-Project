@@ -1,6 +1,5 @@
 class Step < ActiveRecord::Base
 
-  belongs_to :goals
-  default_scope -> { order(created_at: :desc) }
-  
+  belongs_to :goals  
+ 
  end
