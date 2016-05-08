@@ -35,28 +35,45 @@
           <!-- end .sidebar1 --></div>
           <div class="content">
             <p id="notice"><%= notice %></p>
-            <p>
-              <strong>Goal:</strong>
+
+            <h1 style="line-height:.001">
+            <center>
+              <strong>
               <%= @goal.Goal %>
+              </strong>
+            </center>
+            </h1>
+
+            <p style="line-height:.7">
+              <center>
+                <font size="1.3">
+                Date Created: <%= @goal.Date %><br>
+                Due Date: <%= @goal.DueDate %>
+                </font>
+              </center>
             </p>
-            <p>
+
+            <h2 style="line-height:.1">
               <strong>Description:</strong>
-              <%= @goal.Description %>
-            </p>
+            </h2>
+
             <p>
-              <strong>Date:</strong>
-              <%= @goal.Date %>
+                <font size="2"><%= @goal.Description %></font>
             </p>
+
             <p>
-              <strong>Duedate:</strong>
-              <%= @goal.DueDate %>
-            </p>
-            <p><strong>Steps:</strong>
-              <ul>
+
+            <h2>
+              <strong>Steps:</strong>
+            </h2>
+            <p>
+              <ol>
                 <% @goal.steps.each do |step| %>
-                <% if current_goal == step.goal_id %>
+                <% if @goal.id == step.goal_id %>
                 <li>
-                  <%= step %>
+                  <p>
+                    <%= step.requirement %> (Estimated Time: <%= step.completionTime %>) <%= link_to 'Show', goal_step_path(@goal, step.id) %>
+                  </p>
                 </li>
                 <% end %>
                 <% end %>

@@ -14,6 +14,9 @@ class StepsController < ApplicationController
     @step = @goal.steps.build
   end 
 
+  def show
+  end
+
   def edit
     @goal = Goal.find(params[:goal_id])
   end
