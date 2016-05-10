@@ -8,24 +8,23 @@
 <body>
 <div class="container">
   <div class="header"><img src="/assets/pencil-n-paper_small.jpg" alt="Small Logo" name="Insert_logo" width="180" height="90" id="Small_logo" style="background-color: #C6D580; display:block;" />
-  	<% if current_user %>
+    <% if current_user %>
       Signed in as <%= current_user.name %> | <button type="submit" id="logout" onclick="logout_b()"value="0">Logout</button>
     <% else %>
       <button type="submit" id="login" onclick="login_b()"value="0">Login</button> | <button type="submit" id="signup" onclick="signup_b()"value="0">Signup</button>
     <% end %>
     <%= yield %>
    <script>
-		function signup_b() {
-	    	location.href = "/signup"
-		}
-		function logout_b() {
-	    	location.href = "/logout"
-		}
-		function login_b(){
-			location.href = "/login"
-		}
-
-	</script>
+    function signup_b() {
+        location.href = "/signup"
+    }
+    function logout_b() {
+        location.href = "/logout"
+    }
+    function login_b(){
+      location.href = "/login"
+    }
+  </script>
   <!-- end .header --></div>
   <div class="sidebar1">
     <ul class="nav">
@@ -36,18 +35,18 @@
   
     <!-- end .sidebar1 --></div>
   <div class="content">
-  	<h1>Login</h1>
+    <h1>Login</h1>
 
-	<%= form_tag '/login' do %>
+  <%= form_tag '/login' do %>
 
-  	Email: <%= text_field_tag :email %>
-  	Password: <%= password_field_tag :password %>
-  	<%= submit_tag "Submit" %>
+    Email: <%= text_field_tag :email %>
+    Password: <%= password_field_tag :password %>
+    <%= submit_tag "Submit" %>
 
-	<% end %>
+  <% end %>
   </div>
   <div class="footer">
-    <p><strong>© 2016 Mak Survival Edition.  All rights reserved.</strong></p>
+    <p><strong>© 2016 Mak Survival Edition.  All rights reserved.</strong></p>
   <!-- end .footer --></div>
   <!-- end .container --></div>
 </body>
