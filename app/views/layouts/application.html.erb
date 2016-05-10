@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>App</title>
+  <title>Life Planner</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -15,11 +15,52 @@
 	<script src="http://fullcalendar.io/js/fullcalendar-2.7.1/fullcalendar.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.12.0/lodash.js"></script>
+<style>
+	.navbar-text{
+		color: #ffffff;
+		
+	}
+
+	.navbar{
+		background-color: #34F59E ;
+	}
+</style>
 
 </head>
 <body>
-
-<%= yield %>
-
+<div class="container"> 
+    <nav class="navbar navbar-static-top ">
+		
+		<ul class="nav navbar-nav">
+		  <li class="active"><a href="/">
+		  	<span class="glyphicon glyphicon-home"></span>JereJournal</a></li>
+		  <li class="active"><a href="to_dos">My Planner</a></li>
+		  <li class="active"><a href="calendar">
+		  	<span class="glyphicon glyphicon-calendar"></span>Calendar</a></li>
+		  <li class="active"><a href="#">Contact Us</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<% if current_user %>
+		      <li class="active"><a href="">Signed in as <%= current_user.name %></a></li>
+		      <li class="active"><a href="/logout">Logout</a></li>
+		    <% else %>
+		      <li class="active"><a href="/login">Login</a></li>
+		      <li class="active"><a href="/signup">Signup</a></li>
+		    <% end %>
+		</ul>
+		
+	</nav>	
+</div>
+<div class="container">
+  <!--div class="header">
+  	<img src="/assets/pencil-n-paper.jpg"  display:block; />
+  	<img src="/assets/pencil-n-paper.jpg" alt="Small Logo" name="Insert_logo" width="180" height="90" id="Small_logo" style="background-color: #C6D580; display:block;" />
+  </div-->
+  <%= yield %>    
+ 
+  <div class="footer navbar">
+    <p><strong>© 2016 Mak Survival Edition.  All rights reserved.</strong></p>
+  </div>
+</div>
 </body>
 </html>
