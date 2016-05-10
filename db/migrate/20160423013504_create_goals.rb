@@ -1,6 +1,8 @@
 class CreateGoals < ActiveRecord::Migration
   def change
     create_table :goals do |t|
+     # puts "******************************************"
+     # puts t.methods
       t.string :Goal
       t.text :Description
       t.date :Date

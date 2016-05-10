@@ -11,7 +11,5 @@
 // about supported directives.
 //
 //= require jquery
-//= require calendarview
-//= require prototype
 //= require jquery_ujs
 //= require_tree .
