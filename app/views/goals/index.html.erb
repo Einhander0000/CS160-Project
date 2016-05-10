@@ -37,15 +37,12 @@
             
             
             <p id="notice"><%= notice %></p>
-            <h1>Listing Goals</h1>
+            <h1>Your Goals</h1>
             <table>
               <thead>
                 <tr>
                   <th>Goal</th>
-                  <th>Description</th>
-                  <th>Date</th>
                   <th>Duedate</th>
-                  <th>Steps</th>
                   <th colspan="3"></th>
                 </tr>
               </thead>
@@ -55,21 +52,17 @@
                 <% if current_user.id == goal.user_id %>
                 <tr>
                   <td><%= goal.Goal %></td>
-                  <td><%= goal.Description %></td>
-                  <td><%= goal.Date %></td>
                   <td><%= goal.DueDate %></td>
-                  <td><%= link_to 'Show', goal %></td>
+                  <td><%= link_to 'View', goal %></td>
                   <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-                  <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
                 <% end %>
                 <% end %>
               </tbody>
             </table>
             <br>
-            <%= link_to 'New Goal', new_goal_path %>
-            <br>
-            <%= link_to 'New To do', new_to_do_path %>
+            <%= link_to 'Create A New Goal', new_goal_path, {:style=>'font-size: 18px;', :class => "css_class"} %>
             <!-- end .content --></div>
             <div class="footer">
               <p><strong>© 2016 Mak Survival Edition.  All rights reserved.</strong></p>
