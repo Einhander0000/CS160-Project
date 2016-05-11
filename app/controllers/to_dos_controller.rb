@@ -17,6 +17,7 @@ class ToDosController < ApplicationController
   # GET /to_dos/1
   # GET /to_dos/1.json
   def show
+    @to_do = ToDo.find(params[:id])
   end
 
   # GET /to_dos/new
@@ -31,7 +32,7 @@ class ToDosController < ApplicationController
   # POST /to_dos
   # POST /to_dos.json
   def create
-    @to_do = ToDo.new(to_do_params)
+    @to_do = current_user.to_dos.new(to_do_params)
 
     respond_to do |format|
       if @to_do.save

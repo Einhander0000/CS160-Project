@@ -4,6 +4,7 @@ class CreateToDos < ActiveRecord::Migration
       t.string :task
       t.text :description
       t.integer :time
+      t.integer :user_id
 
       t.timestamps null: false
     end

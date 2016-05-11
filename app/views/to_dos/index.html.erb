@@ -4,33 +4,22 @@
     
     <p id="notice"><%= notice %></p>
 
-    <h1>Listing To Dos</h1>
+    <center><h1 style="padding-bottom:10px"><strong><u>Your To Do List</u></strong></h1></center>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Task</th>
-          <th>Description</th>
-          <th>Time</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+    <p>
+    <ul>
+    <% @to_dos.each do |to_do| %>
+    <!-- Ensure that you only display goals for current user -->
+    <% if current_user.id == to_do.user_id %>
+      <li style="font-size:20px"><%= link_to to_do.task, to_do, class: 'goalLink' %> (Estimated Time: <%= to_do.time %>) | <%= link_to 'Delete', to_do, class: 'delete', method: :delete, data: { confirm: 'Are you sure?' } %></li>
 
-      <tbody>
-        <% @to_dos.each do |to_do| %>
-          <tr>
-            <td><%= to_do.task %></td>
-            <td><%= to_do.description %></td>
-            <td><%= to_do.time %></td>
-            <td><%= link_to 'Show', to_do %></td>
-            <td><%= link_to 'Edit', edit_to_do_path(to_do) %></td>
-            <td><%= link_to 'Destroy', to_do, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <% end %>
+    <% end %>
+    </ul>
+  </p>
 
-    <br>
+  <br>
 
-    <%= link_to 'New To do', new_to_do_path %>
-    <!-- end .content --></div>
+  <%= link_to 'New To do', new_to_do_path, {:style=>'font-size: 18px;', :class => "css_class"} %>
+  <!-- end .content -->
+  </div>
