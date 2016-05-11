@@ -27,7 +27,7 @@
         <!-- end .header --></div>
         <div class="sidebar1">
           <ul class="nav">
-            <li><a href="/">Home</a></li>
+            <li> <%= link_to 'Home', root_path %> </li>
             <li><a href="to_dos">My Planner</a></li>
             <li><a href="#">Contact Us</a></li>
           </ul>
@@ -54,8 +54,8 @@
                   <td><%= goal.Goal %></td>
                   <td><%= goal.DueDate %></td>
                   <td><%= link_to 'View', goal %></td>
-                  <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-                  <td><%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td> <%= link_to 'Edit', edit_goal_path(goal) %></td>
+                  <td> <%= link_to 'Delete', goal, class: 'delete', method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
                 <% end %>
                 <% end %>

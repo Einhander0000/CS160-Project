@@ -33,12 +33,17 @@ a img {
 }
 
 a:link {
-	color: #42413C;
 	text-decoration: underline; 
+	&.delete {
+        color: red;
+     }
 }
 a:visited {
 	color: #6E6C64;
 	text-decoration: underline;
+	&.delete {
+        color: red;
+     }
 }
 a:hover, a:active, a:focus { 
 	text-decoration: none;

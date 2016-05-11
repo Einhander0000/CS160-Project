@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root :to => 'welcome#index'
+
   resources :goals do
     resources :steps
   end
@@ -13,7 +15,6 @@ Rails.application.routes.draw do
 
   resources :to_dos
 
-  root 'welcome#index'
 
   # These routes will be for signup. The first renders a form in the browse, the second will 
   # receive the form and create a user in our database using the data given to us by the user.
