@@ -37,9 +37,12 @@ a:link {
 	&.delete {
         color: red;
      }
+    &.goalLink {
+    	font-size: 20px;
+    }
 }
 a:visited {
-	color: #6E6C64;
+	color: #337ab7;
 	text-decoration: underline;
 	&.delete {
         color: red;

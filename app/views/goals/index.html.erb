@@ -2,30 +2,20 @@
   
   
   <p id="notice"><%= notice %></p>
-  <h1>Your Goals</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Goal</th>
-        <th>Duedate</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @goals.each do |goal| %>
-      <!-- Ensure that you only display goals for current user -->
-      <% if current_user.id == goal.user_id %>
-      <tr>
-        <td><%= goal.Goal %></td>
-        <td><%= goal.DueDate %></td>
-        <td><%= link_to 'View', goal %></td>
-        <td> <%= link_to 'Edit', edit_goal_path(goal) %></td>
-        <td> <%= link_to 'Delete', goal, class: 'delete', method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-      <% end %>
-    </tbody>
-  </table>
+  <center><h1><strong><u>Your Goals</u></strong></h1></center>
+
+  <p>
+    <ul>
+    <% @goals.each do |goal| %>
+    <!-- Ensure that you only display goals for current user -->
+    <% if current_user.id == goal.user_id %>
+      <li style="font-size:20px"><%= link_to goal.Goal, goal, class: 'goalLink'%> (Due by: <%= goal.DueDate %>) | <%= link_to 'Delete', goal, class: 'delete', method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+    <% end %>
+    <% end %>
+    </ul>
+  </p>
+
   <br>
   <%= link_to 'Create A New Goal', new_goal_path, {:style=>'font-size: 18px;', :class => "css_class"} %>
   <!-- end .content --></div>

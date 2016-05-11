@@ -20,6 +20,11 @@ class StepsController < ApplicationController
 
   def edit
     @goal = Goal.find(params[:goal_id])
+    @step = Step.find(params[:id])
+  end
+
+  def get_goal
+    @goal = Goal.find(params[:goal_id]) if params[:goal_id]
   end
 
   def create
@@ -28,7 +33,7 @@ class StepsController < ApplicationController
 
     respond_to do |format|
       if @step.save
-        format.html { redirect_to  goal_steps_path(@goal), notice: 'Step was successfully created.' }
+        format.html { redirect_to  goal_path(@goal), notice: 'Step was successfully created.' }
         format.json { render :show, status: :created, location: @step }
       else
         format.html { render :new }
@@ -39,10 +44,10 @@ class StepsController < ApplicationController
 
   def update 
     @goal = Goal.find(params[:goal_id])
-    @step.update(step_params)
+    @step = Step.find(params[:id])
     respond_to do |format|
       if @step.update(step_params)
-        format.html { redirect_to goal_steps_path(@goal), notice: 'Step was successfully updated.' }
+        format.html { redirect_to goal_path(@goal), notice: 'Step was successfully updated.' }
         format.json { render :show, status: :ok, location: @step }
       else
         format.html { render :edit }
@@ -55,9 +60,11 @@ class StepsController < ApplicationController
   # POST /steps.json
   
   def destroy
+    @goal = Goal.find(params[:goal_id])
+    @step = Step.find(params[:id])
     @step.destroy
     respond_to do |format|
-      format.html { redirect_to steps_url, notice: 'Step was successfully destroyed.' }
+      format.html { redirect_to goal_path(@goal), notice: 'Step was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
