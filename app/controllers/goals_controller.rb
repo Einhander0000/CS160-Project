@@ -6,6 +6,12 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     @goals = Goal.all
+    respond_to do |format|
+      format.html {render :index}
+      format.json {
+        render json: @goals
+      }
+    end
   end
 
   # GET /goals/1
