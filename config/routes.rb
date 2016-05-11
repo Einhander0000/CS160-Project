@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   resources :calendar
 
-  resources :todolist
-
   resources :to_dos
 
 
