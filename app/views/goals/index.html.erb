@@ -1,72 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Life Planner</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="header"><img src="/assets/pencil-n-paper_small.jpg" alt="Small Logo" name="Insert_logo" width="180" height="90" id="Small_logo" style="background-color: #C6D580; display:block;" />
-        <% if current_user %>
-        Signed in as <%= current_user.name %> | <button type="submit" id="logout" onclick="logout_b()"value="0">Logout</button>
-        <% else %>
-        <button type="submit" id="login" onclick="login_b()"value="0">Login</button> | <button type="submit" id="signup" onclick="signup_b()"value="0">Signup</button>
-        <% end %>
-        <%= yield %>
-        <script>
-        function signup_b() {
-        location.href = "/signup"
-        }
-        function logout_b() {
-        location.href = "/logout"
-        }
-        function login_b(){
-        location.href = "/login"
-        }
-        </script>
-        <!-- end .header --></div>
-        <div class="sidebar1">
-          <ul class="nav">
-            <li> <%= link_to 'Home', root_path %> </li>
-            <li><a href="to_dos">My Planner</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
-          
-          <!-- end .sidebar1 --></div>
-          <div class="content">
-            
-            
-            <p id="notice"><%= notice %></p>
-            <h1>Your Goals</h1>
-            <table>
-              <thead>
-                <tr>
-                  <th>Goal</th>
-                  <th>Duedate</th>
-                  <th colspan="3"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @goals.each do |goal| %>
-                <!-- Ensure that you only display goals for current user -->
-                <% if current_user.id == goal.user_id %>
-                <tr>
-                  <td><%= goal.Goal %></td>
-                  <td><%= goal.DueDate %></td>
-                  <td><%= link_to 'View', goal %></td>
-                  <td> <%= link_to 'Edit', edit_goal_path(goal) %></td>
-                  <td> <%= link_to 'Delete', goal, class: 'delete', method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                </tr>
-                <% end %>
-                <% end %>
-              </tbody>
-            </table>
-            <br>
-            <%= link_to 'Create A New Goal', new_goal_path, {:style=>'font-size: 18px;', :class => "css_class"} %>
-            <!-- end .content --></div>
-            <div class="footer">
-              <p><strong>© 2016 Mak Survival Edition.  All rights reserved.</strong></p>
-              <!-- end .footer --></div>
-              <!-- end .container --></div>
-            </body>
-          </html>
+<div class="content">
+  
+  
+  <p id="notice"><%= notice %></p>
+  <h1>Your Goals</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Goal</th>
+        <th>Duedate</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @goals.each do |goal| %>
+      <!-- Ensure that you only display goals for current user -->
+      <% if current_user.id == goal.user_id %>
+      <tr>
+        <td><%= goal.Goal %></td>
+        <td><%= goal.DueDate %></td>
+        <td><%= link_to 'View', goal %></td>
+        <td> <%= link_to 'Edit', edit_goal_path(goal) %></td>
+        <td> <%= link_to 'Delete', goal, class: 'delete', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'Create A New Goal', new_goal_path, {:style=>'font-size: 18px;', :class => "css_class"} %>
+  <!-- end .content --></div>

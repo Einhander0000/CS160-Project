@@ -6,6 +6,12 @@ class ToDosController < ApplicationController
   # GET /to_dos.json
   def index
     @to_dos = ToDo.all
+    respond_to do |format|
+      format.html {render :index }
+      format.json {
+        render json: @to_dos
+      }
+    end
   end
 
   # GET /to_dos/1
